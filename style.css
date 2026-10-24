@@ -1008,11 +1008,66 @@ button, input { font: inherit; color: inherit; }
 }
 .facts li .e { flex-shrink: 0; width: 22px; text-align: center; }
 .facts a { color: var(--accent); font-weight: 700; }
+.about-h { margin: 24px 0 10px; font-size: 20px; line-height: 1.2; }
+.services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.service {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border: var(--line) solid var(--ink);
+  border-radius: 16px;
+  background: var(--paper);
+  box-shadow: 3px 3px 0 var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+}
+.service:nth-child(1) { background: var(--lilac); transform: rotate(-1deg); }
+.service:nth-child(2) { background: var(--green); transform: rotate(1deg); }
+.service:nth-child(3) { background: var(--blue); transform: rotate(1deg); }
+.service:nth-child(4) { background: var(--yellow); transform: rotate(-1deg); }
+.service:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.service-e { font-size: 24px; line-height: 1; }
+.service b { font-size: 16px; line-height: 1.2; }
+.service span:last-child { font-size: 13px; line-height: 1.35; }
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border: 4px solid var(--ink);
+  border-radius: 20px;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 5px 5px 0 var(--ink);
+  text-decoration: none;
+  transform: rotate(-.6deg);
+}
+.product:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+.product-name { font-size: 26px; font-weight: 700; line-height: 1.1; }
+.product-desc { font-size: 15.5px; line-height: 1.4; }
+.product-cta {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 8px 14px;
+  border: var(--line) solid var(--ink);
+  border-radius: 999px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 15px;
+}
+
 .socials {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin: 18px 0 14px;
+  margin: 0 0 18px;
 }
 .social {
   display: flex;

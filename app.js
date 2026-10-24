@@ -930,11 +930,36 @@ const POSES = {
       ["tt", "TikTok", CONFIG.TIKTOK_URL],
     ].filter(([, , url]) => has(url));
 
+    const services = [
+      ["🤖", "ИИ-агенты", "под ваши процессы: продажи, поддержка, рутина"],
+      ["💬", "ChatGPT для бизнеса", "внедрение и обучение команды"],
+      ["💻", "IT-разработка", "сайты, интеграции, CRM, автоматизации"],
+      ["🧠", "Консалтинг", "где ИИ даст результат и с чего начать"],
+    ];
+    const tgLink = has(CONFIG.PERSONAL_TG_URL) ? CONFIG.PERSONAL_TG_URL : CONFIG.TELEGRAM_URL;
+
     root.append(
       h("img", { class: "about-photo", src: "assets/nikolay.webp", alt: "Николай Васильков на сцене с микрофоном", width: "200", height: "200" }),
       h("h1", { class: "about-name" }, "Николай Васильков"),
       h("p", { class: "about-role" }, "IT-предприниматель, сооснователь Smart Response"),
       h("ul", { class: "facts" }, facts.map(([e, t]) => h("li", null, h("span", { class: "e", "aria-hidden": "true" }, e), h("span", null, t)))),
+      h("h2", { class: "about-h" }, "Сотрудничество"),
+      h("div", { class: "services" },
+        services.map(([e, title, sub]) =>
+          h("a", { class: "service", href: tgLink, target: "_blank", rel: "noopener noreferrer" },
+            h("span", { class: "service-e", "aria-hidden": "true" }, e),
+            h("b", null, title),
+            h("span", null, sub)
+          )
+        )
+      ),
+      h("h2", { class: "about-h" }, "Мой продукт"),
+      h("a", { class: "product", href: CONFIG.SMARTRESPONSE_URL, target: "_blank", rel: "noopener noreferrer" },
+        h("span", { class: "product-name" }, "Smart Response"),
+        h("span", { class: "product-desc" }, "Платформа для создания ИИ-агентов: умные формы, виджеты и автоворонки, которые продают за вас."),
+        h("span", { class: "product-cta" }, "smartresponse.app →")
+      ),
+      h("h2", { class: "about-h" }, "Где меня читать"),
       h("div", { class: "socials" },
         socials.map(([ico, label, url]) =>
           h("a", { class: "social", href: url, target: "_blank", rel: "noopener noreferrer" }, h("span", { html: SOCIAL_ICON[ico], style: "display:contents" }), label)

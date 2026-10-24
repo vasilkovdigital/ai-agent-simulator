@@ -13,7 +13,7 @@ const CONFIG = {
   YOUTUBE_URL: "https://www.youtube.com/channel/UC5o--_vMubbw0R9OVJjzwNA",
   LINKEDIN_URL: "https://www.linkedin.com/in/nicholasvasilkov/",
   X_URL: "https://x.com/vasilkov_nick",
-  TIKTOK_URL: "#",
+  TIKTOK_URL: "https://www.tiktok.com/@vasilkov.digital",
   SMARTRESPONSE_URL: "https://smartresponse.app",
 };
 

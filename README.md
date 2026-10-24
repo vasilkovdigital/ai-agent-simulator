@@ -59,7 +59,7 @@ const CONFIG = {
   - на zip-архив папки `skill/nichego-ne-teryayu` (положите его, например, в `skill/nichego-ne-teryayu.zip` и укажите этот путь);
   - на любую внешнюю страницу.
 - **`TELEGRAM_URL`** — кнопка «Мой Telegram: гайды и промпты», открывается в новой вкладке.
-- **Вкладка «Обо мне»:** `PERSONAL_TG_URL` (широкая кнопка «Написать мне в Telegram»), `SITE_URL`, `YOUTUBE_URL`, `LINKEDIN_URL`, `X_URL`, `TIKTOK_URL`, `SMARTRESPONSE_URL`. Ссылка со значением `"#"` на странице не показывается (сейчас так у TikTok).
+- **Вкладка «Обо мне»:** `PERSONAL_TG_URL` (широкая кнопка «Написать мне в Telegram»), `SITE_URL`, `YOUTUBE_URL`, `LINKEDIN_URL`, `X_URL`, `TIKTOK_URL`, `SMARTRESPONSE_URL`. Ссылка со значением `"#"` на странице не показывается.
 
 Термины глоссария лежат в массиве `GLOSSARY` в `app.js`, фото для «Обо мне» — `assets/nikolay.webp`.
 

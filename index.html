@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7C3AED">
+  <meta name="description" content="Симулятор: создайте ИИ-агента «Ничего не теряю» за 2 минуты.">
+  <title>Агент «Ничего не теряю»</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="phone" id="phone">
+    <header class="topbar">
+      <button class="back" id="back" type="button" aria-label="Назад">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Назад</span>
+      </button>
+      <div class="progress-wrap">
+        <div class="progress" id="progress" role="progressbar" aria-label="Прогресс" aria-valuemin="1" aria-valuemax="14" aria-valuenow="1">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-label" id="progressLabel">Шаг 1 из 14</div>
+      </div>
+    </header>
+
+    <main class="stage" id="stage"></main>
+
+    <footer class="note" id="note">Это симуляция: данные вымышлены, ничего не подключается</footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

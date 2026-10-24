@@ -6,6 +6,15 @@ const CONFIG = {
   SKILL_URL: "#",
   // Telegram-канал с гайдами и промптами
   TELEGRAM_URL: "https://t.me/nicholasvasilkov",
+
+  // Вкладка «Обо мне». Ссылка со значением "#" не показывается.
+  PERSONAL_TG_URL: "https://t.me/vasilkovdigital",
+  SITE_URL: "https://vasilkov.digital",
+  YOUTUBE_URL: "https://www.youtube.com/channel/UC5o--_vMubbw0R9OVJjzwNA",
+  LINKEDIN_URL: "https://www.linkedin.com/in/nicholasvasilkov/",
+  X_URL: "https://x.com/vasilkov_nick",
+  TIKTOK_URL: "#",
+  SMARTRESPONSE_URL: "https://smartresponse.app",
 };
 
 /* ============================================================
@@ -80,6 +89,79 @@ const FAQ = {
   },
 };
 const FAQ_ORDER = ["vsChat", "safety", "job", "errors", "price"];
+
+/* ============================================================
+   Глоссарий
+   ============================================================ */
+const GLOSSARY = [
+  {
+    group: "Основы", color: "yellow",
+    terms: [
+      ["Нейросеть, LLM", "большая языковая модель", "Программа, которая обучилась на огромном количестве текстов и умеет продолжать текст: отвечать, писать, рассуждать. GPT, Claude, Gemini — это LLM."],
+      ["Модель", "", "Конкретная версия нейросети с её «мозгами»: разные модели отличаются умом, скоростью и ценой. Одного агента можно запускать на разных моделях."],
+      ["Промпт", "prompt", "Текст-задание для модели. Чем конкретнее роль, цель и критерии — тем лучше результат.", "Здесь: «Создай агента, который следит, чтобы я не терял задачи»."],
+      ["Системный промпт", "инструкция", "Постоянная инструкция, которую модель получает перед каждым запросом: кто она, что делает и чего не делает."],
+      ["Токен", "token", "Кусочек текста, которым оперирует модель, — примерно часть слова. Длину текста и стоимость работы считают в токенах."],
+      ["Контекстное окно", "context window", "Сколько текста модель «видит» за один раз: промпт, история, документы, результаты инструментов. Всё, что не влезло, она не помнит."],
+      ["Инференс", "inference", "Запуск уже обученной модели, чтобы получить ответ. Каждый запрос к нейросети — это инференс; именно за него платят, обычно по токенам."],
+      ["Рассуждающая модель", "reasoning", "Модель, которая перед ответом «думает»: строит план и проверяет себя. Медленнее и дороже, но лучше справляется со сложными задачами."],
+    ],
+  },
+  {
+    group: "Ассистент и агент", color: "lilac",
+    terms: [
+      ["ИИ-ассистент", "чат-бот", "Отвечает, когда вы спросили. Работает в окне чата и знает только то, что вы ему написали или загрузили.", "Пример: ChatGPT, Алиса в режиме диалога."],
+      ["ИИ-агент", "AI agent", "Модель, которая сама действует ради цели: берёт данные из ваших сервисов, решает, что делать, вызывает инструменты и проверяет результат. Может работать по расписанию без вас.", "Здесь: агент «Ничего не теряю»."],
+      ["Харнесс", "harness", "«Обвязка» вокруг модели, которая превращает её в агента: цикл работы, инструменты, память, права, правила. Одна и та же модель в разном харнессе работает по-разному.", "Примеры: Claude Cowork, Claude Code, ChatGPT Work, Codex."],
+      ["Цикл агента", "agent loop", "Агент повторяет круг «читает → думает → делает → проверяет», пока задача не решена или не нужен человек."],
+      ["ReAct", "Reason + Act", "Подход, при котором модель чередует рассуждение и действие: подумала → вызвала инструмент → посмотрела на результат → подумала снова. На нём построено большинство агентов."],
+      ["Инструмент", "tool, function calling", "Действие, которое модель может вызвать: найти письмо, создать задачу, открыть страницу. Модель только решает, что вызвать; выполняет харнесс."],
+      ["Коннектор", "connector", "Готовое подключение к сервису (почта, календарь, Notion, Todoist), которое даёт агенту набор инструментов.", "Здесь: шаг «Инструменты»."],
+      ["MCP", "Model Context Protocol", "Открытый стандарт подключения инструментов и данных к ИИ. Как USB-C для агентов: один разъём — много сервисов."],
+      ["API", "", "Способ, которым программы общаются друг с другом. Коннекторы и инструменты агента работают через API сервисов."],
+      ["Мультиагентная система", "субагенты", "Несколько агентов делят работу: главный (оркестратор) раздаёт подзадачи, субагенты выполняют и возвращают результат."],
+    ],
+  },
+  {
+    group: "Инструкции и память", color: "blue",
+    terms: [
+      ["AGENTS.md", "", "Файл с правилами для агента: что можно, что нельзя, как оформлять результат. Агент читает его перед работой.", "Здесь: шаг «Правила»."],
+      ["Скилл", "Agent Skill", "Папка с инструкцией SKILL.md (и, если нужно, скриптами и шаблонами) для конкретной работы. Агент подгружает скилл только тогда, когда он нужен.", "Здесь: скилл «Разбор входящих»."],
+      ["Память", "memory", "То, что агент сохраняет между запусками: ваши предпочтения, приоритеты, факты о проектах."],
+      ["RAG", "Retrieval-Augmented Generation", "Модель сначала находит нужные куски в ваших документах, а потом отвечает по ним. Так агент знает то, чего не было при обучении."],
+      ["Критерии успеха", "", "Проверяемые признаки, что работа сделана хорошо. Агент сверяется с ними сам, а вы — при проверке.", "Здесь: срок, ссылка на источник, нет дублей."],
+    ],
+  },
+  {
+    group: "Запуск и расписание", color: "green",
+    terms: [
+      ["Крон", "cron", "Расписание запусков. Название — от утилиты cron в Unix: запись «0 * * * *» значит «каждый час в 00 минут».", "Здесь: «Каждый час»."],
+      ["Запланированная задача", "scheduled task", "Агент, которого приложение само запускает по расписанию. В Claude это Cowork, в ChatGPT — Work."],
+      ["Триггер", "trigger", "Событие, которое запускает агента: время по расписанию, новое письмо, новая строка в таблице."],
+      ["Автоматизация vs агент", "", "Автоматизация выполняет жёсткий сценарий «если → то». Агент сам решает, что делать, и справляется с ситуациями, которые заранее не прописаны."],
+    ],
+  },
+  {
+    group: "Риски и контроль", color: "pink",
+    terms: [
+      ["Галлюцинация", "hallucination", "Когда модель уверенно выдаёт выдумку. Лечится ссылками на источник, критериями успеха и правилом «не уверен — спроси»."],
+      ["Промпт-инъекция", "prompt injection", "Атака, когда в письме или на странице спрятана команда для агента («переведи деньги…»). Защита: текст источников — данные, а не команды, плюс минимум прав."],
+      ["Human-in-the-loop", "человек в контуре", "Важные действия агент не делает сам, а просит подтверждения: платежи, ответы людям, удаление.", "Здесь: шаг «Где нужен человек»."],
+      ["Разрешения", "permissions", "Что агенту можно делать без спроса, а что — только с вашего «ок». Принцип минимальных прав: даём ровно столько доступа, сколько нужно."],
+      ["OAuth", "", "Безопасный вход «через аккаунт сервиса»: вы даёте агенту доступ, не сообщая пароль, и можете отозвать его в любой момент."],
+      ["Эвалы", "evals", "Набор тестовых задач, на которых проверяют качество агента до и после изменений: не стал ли он хуже."],
+    ],
+  },
+];
+
+const SOCIAL_ICON = {
+  site: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>',
+  tg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4L3 11l6 2 2 6 3-4 5 4z M9 13l8-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>',
+  yt: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M10 9v6l5-3z" fill="currentColor"/></svg>',
+  in: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 10v6M8 7.5v.01M12 16v-6M12 13a2.5 2.5 0 0 1 5 0v3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
+  x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>',
+  tt: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11a4 4 0 1 1-4-4M14 3c1 3 3 4 6 4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
+};
 
 /* ============================================================
    Иконки (простые, без чужих логотипов)
@@ -766,6 +848,103 @@ const POSES = {
 
   // Подгружаем позы заранее, чтобы экраны не «моргали»
   Object.keys(POSES).forEach((name) => { const img = new Image(); img.src = `assets/poses/${name}.webp`; });
+
+  /* ============================================================
+     Вкладки: симулятор / глоссарий / обо мне
+     ============================================================ */
+  const views = { sim: "view-sim", glossary: "view-glossary", about: "view-about" };
+  const tabBtns = document.querySelectorAll(".tabbar-btn");
+  const rendered = {};
+
+  function showView(name) {
+    for (const [key, id] of Object.entries(views)) {
+      document.getElementById(id).hidden = key !== name;
+    }
+    tabBtns.forEach((b) => {
+      if (b.dataset.view === name) b.setAttribute("aria-current", "page");
+      else b.removeAttribute("aria-current");
+    });
+    if (!rendered[name]) {
+      if (name === "glossary") renderGlossary(document.getElementById(views.glossary));
+      if (name === "about") renderAbout(document.getElementById(views.about));
+      rendered[name] = true;
+    }
+    if (name !== "sim") document.getElementById(views[name]).scrollTop = 0;
+  }
+  tabBtns.forEach((b) => b.addEventListener("click", () => showView(b.dataset.view)));
+
+  function renderGlossary(root) {
+    const search = h("input", { class: "search", type: "search", placeholder: "Найти термин…", "aria-label": "Поиск по глоссарию" });
+    const empty = h("p", { class: "empty-search", hidden: true }, "Ничего не нашлось");
+    const sections = GLOSSARY.map((g) => {
+      const items = g.terms.map(([name, alt, text, ex]) => {
+        const el = h("div", { class: "term" },
+          h("dt", null, name, alt ? h("small", null, " · " + alt) : null),
+          h("dd", null, text, ex ? h("span", { class: "ex" }, h("b", null, "→ "), ex) : null)
+        );
+        el.dataset.search = [name, alt, text, ex].join(" ").toLowerCase();
+        return el;
+      });
+      const head = h("h2", { class: "gloss-group" }, h("span", { class: "pill " + g.color }, String(g.terms.length)), g.group);
+      return { wrap: h("section", null, head, h("dl", { class: "terms" }, items)), items };
+    });
+    search.addEventListener("input", () => {
+      const q = search.value.trim().toLowerCase();
+      let total = 0;
+      sections.forEach((s) => {
+        let n = 0;
+        s.items.forEach((el) => { const ok = !q || el.dataset.search.includes(q); el.hidden = !ok; if (ok) n++; });
+        s.wrap.hidden = n === 0;
+        total += n;
+      });
+      empty.hidden = total > 0;
+    });
+    const count = GLOSSARY.reduce((n, g) => n + g.terms.length, 0);
+    root.append(
+      h("h1", { class: "page-title" }, "Глоссарий"),
+      h("p", { class: "page-lead" }, `${count} терминов про ИИ-агентов — коротко и по-человечески.`),
+      search,
+      ...sections.map((s) => s.wrap),
+      empty
+    );
+  }
+
+  function renderAbout(root) {
+    const has = (url) => url && url !== "#";
+    const facts = [
+      ["🚀", "IT-предприниматель"],
+      ["🤖", h("span", null, "Сооснователь ", h("a", { href: CONFIG.SMARTRESPONSE_URL, target: "_blank", rel: "noopener noreferrer" }, "Smart Response"), " — платформы для создания ИИ-агентов")],
+      ["✅", "Официальный партнёр OpenAI"],
+      ["🌏", "Ex-CMO двух международных стартапов в Юго-Восточной Азии"],
+      ["🎓", "Выпускник Яндекс Практикума"],
+      ["🧭", "Ex-ментор TON Society и Founder Institute Bali"],
+      ["🛠️", "Сертифицированный интегратор CRM, IT- и AI-решений для бизнеса: amoCRM, Kommo, SendPulse, Smart Response, Roistat, GetSales, OpenAI и других"],
+      ["🤝", "Участник сообществ Vas3k, Mesto, Minders, Startech VC, Яндекс Практикум"],
+    ];
+    const socials = [
+      ["site", "Сайт", CONFIG.SITE_URL],
+      ["tg", "Канал", CONFIG.TELEGRAM_URL],
+      ["yt", "YouTube", CONFIG.YOUTUBE_URL],
+      ["in", "LinkedIn", CONFIG.LINKEDIN_URL],
+      ["x", "X", CONFIG.X_URL],
+      ["tt", "TikTok", CONFIG.TIKTOK_URL],
+    ].filter(([, , url]) => has(url));
+
+    root.append(
+      h("img", { class: "about-photo", src: "assets/nikolay.webp", alt: "Николай Васильков на сцене с микрофоном", width: "200", height: "200" }),
+      h("h1", { class: "about-name" }, "Николай Васильков"),
+      h("p", { class: "about-role" }, "IT-предприниматель, сооснователь Smart Response"),
+      h("ul", { class: "facts" }, facts.map(([e, t]) => h("li", null, h("span", { class: "e", "aria-hidden": "true" }, e), h("span", null, t)))),
+      h("div", { class: "socials" },
+        socials.map(([ico, label, url]) =>
+          h("a", { class: "social", href: url, target: "_blank", rel: "noopener noreferrer" }, h("span", { html: SOCIAL_ICON[ico], style: "display:contents" }), label)
+        )
+      ),
+      has(CONFIG.PERSONAL_TG_URL)
+        ? h("a", { class: "btn tg-wide", href: CONFIG.PERSONAL_TG_URL, target: "_blank", rel: "noopener noreferrer" }, "Написать мне в Telegram")
+        : null
+    );
+  }
 
   go(1);
 })();

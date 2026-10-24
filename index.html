@@ -13,22 +13,46 @@
 </head>
 <body>
   <div class="phone" id="phone">
-    <header class="topbar">
-      <button class="back" id="back" type="button" aria-label="Назад">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Назад</span>
-      </button>
-      <div class="progress-wrap">
-        <div class="progress" id="progress" role="progressbar" aria-label="Прогресс" aria-valuemin="1" aria-valuemax="14" aria-valuenow="1">
-          <div class="progress-fill" id="progressFill"></div>
+    <!-- Симулятор -->
+    <div class="view" id="view-sim">
+      <header class="topbar">
+        <button class="back" id="back" type="button" aria-label="Назад">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Назад</span>
+        </button>
+        <div class="progress-wrap">
+          <div class="progress" id="progress" role="progressbar" aria-label="Прогресс" aria-valuemin="1" aria-valuemax="14" aria-valuenow="1">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-label" id="progressLabel">Шаг 1 из 14</div>
         </div>
-        <div class="progress-label" id="progressLabel">Шаг 1 из 14</div>
-      </div>
-    </header>
+      </header>
 
-    <main class="stage" id="stage"></main>
+      <main class="stage" id="stage"></main>
 
-    <footer class="note" id="note">Это симуляция: данные вымышлены, ничего не подключается</footer>
+      <footer class="note" id="note">Это симуляция: данные вымышлены, ничего не подключается</footer>
+    </div>
+
+    <!-- Глоссарий -->
+    <div class="view page" id="view-glossary" hidden></div>
+
+    <!-- Обо мне -->
+    <div class="view page" id="view-about" hidden></div>
+
+    <nav class="tabbar" aria-label="Разделы">
+      <button class="tabbar-btn" type="button" data-view="sim" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M12 3v4M9 13h.01M15 13h.01M9.5 16.5h5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <span>Симулятор</span>
+      </button>
+      <button class="tabbar-btn" type="button" data-view="glossary">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z M5 17a3 3 0 0 1 3-3h11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+        <span>Глоссарий</span>
+      </button>
+      <button class="tabbar-btn" type="button" data-view="about">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <span>Обо мне</span>
+      </button>
+    </nav>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>

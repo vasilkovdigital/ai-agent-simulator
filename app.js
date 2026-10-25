@@ -50,7 +50,7 @@ const AGENT_PROMPT = `Ты — мой личный ассистент «Мене
 
 const PLATFORMS = {
   claude: { app: "Claude", mode: "Cowork", freq: "Поставьте расписание на минимальную доступную частоту — в Claude это раз в час.", skill: CONFIG.SKILL_URL_CLAUDE },
-  chatgpt: { app: "ChatGPT", mode: "Work", freq: "Поставьте расписание на минимальную доступную частоту.", skill: CONFIG.SKILL_URL_CHATGPT },
+  chatgpt: { app: "ChatGPT", mode: "Work", freq: "Поставьте расписание на минимальную доступную частоту — в ChatGPT это раз в час.", skill: CONFIG.SKILL_URL_CHATGPT },
 };
 
 function checklist(p) {

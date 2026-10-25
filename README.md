@@ -1,4 +1,6 @@
-# Симулятор ИИ-агента «Ничего не теряю»
+# Симулятор ИИ-агента «Менеджер задач»
+
+Сайт: https://vasilkovdigital.github.io/ai-agent-simulator/
 
 Мобильный веб-симулятор к выступлению «ИИ-агенты — это просто: создаём своего прямо в зале» (IT ALL STAR, Минск, 31 октября).
 Зритель сканирует QR-код, за 2–3 минуты проходит 14 экранов создания агента и получает чек-лист, как собрать такого агента в Claude (Cowork) или ChatGPT (Work).
@@ -15,7 +17,8 @@ index.html                         каркас страницы
 style.css                          стили
 app.js                             логика экранов; CONFIG — в самом начале файла
 assets/poses/*.webp                позы персонажа (пережатые)
-skill/nichego-ne-teryayu/SKILL.md  скилл: промпт, правила, чек-лист
+skill/menedzher-zadach-claude.md   скилл для Claude (Cowork): промпт, правила, чек-лист
+skill/menedzher-zadach-chatgpt.md  скилл для ChatGPT (Work): промпт, правила, чек-лист
 .nojekyll                          отключает обработку Jekyll на GitHub Pages
 ```
 
@@ -49,18 +52,17 @@ https://docs.github.com/ru/pages/getting-started-with-github-pages/configuring-a
 
 ```js
 const CONFIG = {
-  SKILL_URL: "#",
+  SKILL_URL_CLAUDE: "https://drive.google.com/file/d/1t7Ym7zB5nINOxsWqnWJO4acwbs0x2RGx/view?usp=sharing",
+  SKILL_URL_CHATGPT: "https://drive.google.com/file/d/1kpRSYTRSk2N9GESVtciVsmsFRmmbGsMg/view?usp=sharing",
   TELEGRAM_URL: "https://t.me/nicholasvasilkov",
+  // …ссылки для вкладки «Обо мне»
 };
 ```
 
-- **`SKILL_URL`** — ссылка для кнопки «Скачать как скилл» на последнем экране. Пока там `"#"`, кнопка показывает подсказку «Ссылка на скилл скоро появится». Варианты:
-  - прямо на файл в этом же сайте: `"skill/nichego-ne-teryayu/SKILL.md"`;
-  - на zip-архив папки `skill/nichego-ne-teryayu` (положите его, например, в `skill/nichego-ne-teryayu.zip` и укажите этот путь);
-  - на любую внешнюю страницу.
+- **`SKILL_URL_CLAUDE`** и **`SKILL_URL_CHATGPT`** — кнопка «Скачать как скилл» на последнем экране. Она ведёт на ссылку той вкладки, которая открыта (Claude или ChatGPT), и открывается в новой вкладке браузера. Сейчас это файлы на Google Диске; можно указать и файлы из репозитория: `"skill/menedzher-zadach-claude.md"` и `"skill/menedzher-zadach-chatgpt.md"`.
 - **`TELEGRAM_URL`** — кнопка «Мой Telegram: гайды и промпты», открывается в новой вкладке.
 - **Вкладка «Обо мне»:** `PERSONAL_TG_URL` (широкая кнопка «Написать мне в Telegram»), `SITE_URL`, `YOUTUBE_URL`, `LINKEDIN_URL`, `X_URL`, `TIKTOK_URL`, `SMARTRESPONSE_URL`. Ссылка со значением `"#"` на странице не показывается.
 
 Термины глоссария лежат в массиве `GLOSSARY` в `app.js`, фото для «Обо мне» — `assets/nikolay.webp`.
 
-Тексты промпта, чек-листа и ответов на 5 частых вопросов лежат там же, в начале `app.js` (`AGENT_PROMPT`, `checklist()`, `FAQ`). Если меняете их, поправьте и `skill/nichego-ne-teryayu/SKILL.md`.
+Тексты промпта, чек-листа и ответов на 5 частых вопросов лежат там же, в начале `app.js` (`AGENT_PROMPT`, `checklist()`, `FAQ`). Промпт `AGENT_PROMPT` совпадает с разделом 2 обоих скиллов — если меняете его, поправьте и `skill/menedzher-zadach-claude.md`, и `skill/menedzher-zadach-chatgpt.md` (и файлы на Google Диске).

@@ -52,8 +52,8 @@ https://docs.github.com/ru/pages/getting-started-with-github-pages/configuring-a
 
 ```js
 const CONFIG = {
-  SKILL_URL_CLAUDE: "https://drive.google.com/file/d/1t7Ym7zB5nINOxsWqnWJO4acwbs0x2RGx/view?usp=sharing",
-  SKILL_URL_CHATGPT: "https://drive.google.com/file/d/1kpRSYTRSk2N9GESVtciVsmsFRmmbGsMg/view?usp=sharing",
+  SKILL_URL_CLAUDE: "https://drive.google.com/file/d/1jBpZ3KKIpmCJCzQIec_DEyhCnp804n8M/view?usp=sharing",
+  SKILL_URL_CHATGPT: "https://drive.google.com/file/d/1V4glz2WmuZqJFe6MHd7Nbh2k6sQCDm9B/view?usp=sharing",
   TELEGRAM_URL: "https://t.me/nicholasvasilkov",
   // …ссылки для вкладки «Обо мне»
 };

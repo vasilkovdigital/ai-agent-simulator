@@ -158,6 +158,60 @@ const GLOSSARY = [
   },
 ];
 
+
+/* ============================================================
+   Хаб «Полезное»: коннекторы и плагины
+   Элемент: [название, описание, ссылка, метка]. Пустая ссылка — карточка без перехода.
+   Метка «кастом» — нет официального коннектора, ссылка на стороннее решение.
+   ============================================================ */
+const HUB_CONNECTORS = [
+  { group: "Основа", color: "yellow", items: [
+    ["Gmail", "почта", ""],
+    ["Google Календарь", "встречи и события", ""],
+    ["Google Диск", "Docs, Sheets, Slides", ""],
+    ["Notion", "база знаний и управление", ""],
+    ["Todoist", "задачи", ""],
+    ["Linear", "проекты и задачи команды", ""],
+  ]},
+  { group: "Лидогенерация", color: "green", items: [
+    ["Smart Response", "ИИ-виджеты, формы и автоворонки", "https://smartresponse.app"],
+    ["Telegaster", "ловит упоминания по ключевым словам в Telegram-чатах", ""],
+    ["GetSales", "аутрич в LinkedIn и email", ""],
+    ["SendPulse", "рассылки и автоматизация маркетинга", ""],
+  ]},
+  { group: "Продажи: CRM", color: "blue", items: [
+    ["amoCRM", "сделки и контакты", "https://nova-amocrm.ru/widgets/mcp_server", "кастом"],
+    ["Bitrix24", "сделки, задачи и контакты", "https://www.bitrix24.kz/features/ai/mcp/", "кастом"],
+  ]},
+  { group: "Аналитика", color: "lilac", items: [
+    ["Windsor.ai", "данные рекламы и аналитики в одном месте", "https://windsor.ai"],
+  ]},
+  { group: "Сайты и дизайн", color: "pink", items: [
+    ["Тильда", "создание сайтов", ""],
+    ["Figma", "продуктовый дизайн", ""],
+  ]},
+  { group: "Видео и соцсети", color: "yellow", items: [
+    ["Higgsfield", "видео и продакшн", ""],
+    ["CapCut", "видеомонтаж", ""],
+    ["Riverside", "запись и монтаж подкастов и видео", ""],
+    ["Buffer", "управление соцсетями", ""],
+  ]},
+  { group: "Поиск и всё остальное", color: "green", items: [
+    ["Perplexity", "поиск и ресёрч", ""],
+    ["Firecrawl", "чтение сайтов и транскрипты", ""],
+    ["Composio", "один коннектор к сотням приложений", "https://composio.dev"],
+    ["Strava", "спорт и тренировки", ""],
+  ]},
+];
+
+const HUB_PLUGINS = [
+  ["ffmpeg", "обработка и склейка видео", ""],
+  ["Remotion", "видео из кода и шаблонов", ""],
+  ["HyperFrames", "видео из HTML-композиций", ""],
+];
+
+const HUB_KEY = "agentHubOpen";
+
 const SOCIAL_ICON = {
   site: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>',
   tg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4L3 11l6 2 2 6 3-4 5 4z M9 13l8-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>',
@@ -695,14 +749,20 @@ const POSES = {
   // 13. Агент готов
   async function sDone(screen) {
     const go = h("button", { class: "btn primary", type: "button" }, "Сделать такого по-настоящему");
+    const gift = h("div", { class: "card gift" },
+      h("b", null, "🎉 Открыт хаб"),
+      h("span", null, "Внизу появились разделы: Глоссарий, Полезное и Обо мне.")
+    );
     screen.append(
       h("div", { class: "hero" },
         h("div", { class: "cloud" }, "Ваш агент готов!",
           h("small", null, "Так работает любой ИИ-агент: роль, цель, инструменты, правила, разрешения, расписание")),
         poseImg("01-radost"),
+        gift,
         go
       )
     );
+    openHub();
     await tap(go);
     next();
   }
@@ -853,7 +913,23 @@ const POSES = {
   /* ============================================================
      Вкладки: симулятор / глоссарий / обо мне
      ============================================================ */
-  const views = { sim: "view-sim", glossary: "view-glossary", about: "view-about" };
+
+  /* ---------- Хаб открывается после симулятора ---------- */
+  const tabbar = document.getElementById("tabbar");
+  function hubOpen() {
+    try { if (/[?&]hub\b/.test(location.search)) return true; } catch (e) { /* ничего */ }
+    try { return localStorage.getItem(HUB_KEY) === "1"; } catch (e) { return false; }
+  }
+  function openHub() {
+    try { localStorage.setItem(HUB_KEY, "1"); } catch (e) { /* без хранилища откроем только до перезагрузки */ }
+    unlocked = true;
+    tabbar.hidden = false;
+    tabbar.classList.add("reveal");
+  }
+  let unlocked = hubOpen();
+  tabbar.hidden = !unlocked;
+
+  const views = { sim: "view-sim", glossary: "view-glossary", hub: "view-hub", about: "view-about" };
   const tabBtns = document.querySelectorAll(".tabbar-btn");
   const rendered = {};
 
@@ -867,6 +943,7 @@ const POSES = {
     });
     if (!rendered[name]) {
       if (name === "glossary") renderGlossary(document.getElementById(views.glossary));
+      if (name === "hub") renderHub(document.getElementById(views.hub));
       if (name === "about") renderAbout(document.getElementById(views.about));
       rendered[name] = true;
     }
@@ -907,6 +984,33 @@ const POSES = {
       search,
       ...sections.map((s) => s.wrap),
       empty
+    );
+  }
+
+
+  function hubItem([name, note, url, tag]) {
+    const inner = [
+      h("b", null, name, tag ? h("em", { class: "hub-tag" }, tag) : null),
+      h("span", null, note),
+    ];
+    return url
+      ? h("a", { class: "hub-item is-link", href: url, target: "_blank", rel: "noopener noreferrer" }, ...inner)
+      : h("div", { class: "hub-item" }, ...inner);
+  }
+
+  function renderHub(root) {
+    const group = (title, color, items) =>
+      h("section", null,
+        h("h2", { class: "gloss-group" }, h("span", { class: "pill " + color }, String(items.length)), title),
+        h("div", { class: "hub-grid" }, items.map(hubItem))
+      );
+    root.append(
+      h("h1", { class: "page-title" }, "Полезное"),
+      h("p", { class: "page-lead" }, "Всё, что пригодится агенту: сервисы-коннекторы и плагины. Ссылка на карточке — если сервис нужно подключить отдельно."),
+      h("h2", { class: "hub-h" }, "Коннекторы"),
+      ...HUB_CONNECTORS.map((g) => group(g.group, g.color, g.items)),
+      h("h2", { class: "hub-h" }, "Плагины"),
+      group("Для видео", "blue", HUB_PLUGINS)
     );
   }
 

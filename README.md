@@ -52,8 +52,8 @@ https://docs.github.com/ru/pages/getting-started-with-github-pages/configuring-a
 
 ```js
 const CONFIG = {
-  SKILL_URL_CLAUDE: "https://drive.google.com/file/d/1t7Ym7zB5nINOxsWqnWJO4acwbs0x2RGx/view?usp=sharing",
-  SKILL_URL_CHATGPT: "https://drive.google.com/file/d/1kpRSYTRSk2N9GESVtciVsmsFRmmbGsMg/view?usp=sharing",
+  SKILL_URL_CLAUDE: "https://drive.google.com/file/d/1jBpZ3KKIpmCJCzQIec_DEyhCnp804n8M/view?usp=sharing",
+  SKILL_URL_CHATGPT: "https://drive.google.com/file/d/1V4glz2WmuZqJFe6MHd7Nbh2k6sQCDm9B/view?usp=sharing",
   TELEGRAM_URL: "https://t.me/nicholasvasilkov",
   // …ссылки для вкладки «Обо мне»
 };
@@ -65,4 +65,4 @@ const CONFIG = {
 
 Термины глоссария лежат в массиве `GLOSSARY` в `app.js`, фото для «Обо мне» — `assets/nikolay.webp`.
 
-Тексты промпта, чек-листа и ответов на 5 частых вопросов лежат там же, в начале `app.js` (`AGENT_PROMPT`, `checklist()`, `FAQ`). Промпт `AGENT_PROMPT` совпадает с разделом 2 обоих скиллов — если меняете его, поправьте и `skill/menedzher-zadach-claude.md`, и `skill/menedzher-zadach-chatgpt.md` (и файлы на Google Диске).
+Тексты промпта, чек-листа и ответов на 5 частых вопросов лежат там же, в начале `app.js` (`agentPrompt()`, `checklist()`, `FAQ`). Промпт `agentPrompt()` совпадает с разделом 2 обоих скиллов — если меняете его, поправьте и `skill/menedzher-zadach-claude.md`, и `skill/menedzher-zadach-chatgpt.md` (и файлы на Google Диске).

@@ -65,4 +65,4 @@ const CONFIG = {
 
 Термины глоссария лежат в массиве `GLOSSARY` в `app.js`, фото для «Обо мне» — `assets/nikolay.webp`.
 
-Тексты промпта, чек-листа и ответов на 5 частых вопросов лежат там же, в начале `app.js` (`AGENT_PROMPT`, `checklist()`, `FAQ`). Промпт `AGENT_PROMPT` совпадает с разделом 2 обоих скиллов — если меняете его, поправьте и `skill/menedzher-zadach-claude.md`, и `skill/menedzher-zadach-chatgpt.md` (и файлы на Google Диске).
+Тексты промпта, чек-листа и ответов на 5 частых вопросов лежат там же, в начале `app.js` (`agentPrompt()`, `checklist()`, `FAQ`). Промпт `agentPrompt()` совпадает с разделом 2 обоих скиллов — если меняете его, поправьте и `skill/menedzher-zadach-claude.md`, и `skill/menedzher-zadach-chatgpt.md` (и файлы на Google Диске).

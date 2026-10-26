@@ -815,7 +815,7 @@ button, input { font: inherit; color: inherit; }
   gap: 10px;
   text-align: center;
 }
-.final-top .pose { width: 170px; }
+.final-top .pose { width: 130px; }
 .final h1 {
   margin: 0;
   font-size: 25px;
@@ -939,7 +939,8 @@ button, input { font: inherit; color: inherit; }
   background: var(--yellow);
 }
 .links { display: flex; flex-direction: column; gap: 12px; margin-top: 22px; }
-.links .btn.tg { background: var(--blue); }
+.links-top { margin-top: 14px; gap: 10px; }
+.links .btn.tg { background: var(--blue); color: var(--ink); }
 .progress-done { margin: 12px 2px 0; font-size: 14px; font-weight: 700; color: var(--accent); }
 
 /* ---------- Pages: glossary / about ---------- */

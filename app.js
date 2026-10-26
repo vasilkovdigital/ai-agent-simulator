@@ -3,8 +3,8 @@
    ============================================================ */
 const CONFIG = {
   // Кнопка «Скачать как скилл» на экране 14 ведёт на ссылку открытой вкладки
-  SKILL_URL_CLAUDE: "https://drive.google.com/file/d/1t7Ym7zB5nINOxsWqnWJO4acwbs0x2RGx/view?usp=sharing",
-  SKILL_URL_CHATGPT: "https://drive.google.com/file/d/1kpRSYTRSk2N9GESVtciVsmsFRmmbGsMg/view?usp=sharing",
+  SKILL_URL_CLAUDE: "https://drive.google.com/file/d/1jBpZ3KKIpmCJCzQIec_DEyhCnp804n8M/view?usp=sharing",
+  SKILL_URL_CHATGPT: "https://drive.google.com/file/d/1V4glz2WmuZqJFe6MHd7Nbh2k6sQCDm9B/view?usp=sharing",
   // Telegram-канал с гайдами и промптами
   TELEGRAM_URL: "https://t.me/nicholasvasilkov",
 

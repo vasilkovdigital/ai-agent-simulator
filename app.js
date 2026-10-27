@@ -1103,7 +1103,7 @@ const POSES = {
       h("p", { class: "page-lead hub-tip" }, "Плагины можно установить, просто попросив своего чат-бота: он сам найдёт и установит."),
       group("Для видео и звука", "blue", HUB_PLUGINS),
       h("div", { class: "product vpn" },
-        h("span", { class: "product-name" }, "Дополнительно"),
+        h("span", { class: "product-name" }, "Плюшки"),
         h("span", { class: "product-desc" }, "Надёжный VPN, чтобы Claude и ChatGPT работали стабильно."),
         h("a", { class: "product-cta", href: VPN.url, target: "_blank", rel: "sponsored noopener noreferrer" }, "Надёжный VPN: BlancVPN →"),
         h("a", { class: "product-cta alt", href: VPN.guide, target: "_blank", rel: "noopener noreferrer" }, "Гайд: регистрация, оплата и настройка Claude и ChatGPT →")

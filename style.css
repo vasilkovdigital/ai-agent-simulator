@@ -1119,8 +1119,16 @@ button, input { font: inherit; color: inherit; }
   font-size: 15px;
 }
 
-.product.vpn { transform: rotate(.5deg); text-decoration: none; }
-.product.vpn .product-cta { text-decoration: none; line-height: 1.3; }
+/* Блок «Дополнительно» в «Полезном»: ровный, кнопки на всю ширину */
+.product.vpn { margin-top: 26px; transform: none; }
+.product.vpn .product-cta {
+  align-self: stretch;
+  padding: 12px 14px;
+  border-radius: 14px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.3;
+}
 .product.vpn .product-cta.alt { background: var(--paper); }
 .hub-tip { margin: 6px 0 12px; }
 

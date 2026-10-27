@@ -185,7 +185,7 @@ const HUB_CONNECTORS = [
   ]},
   { group: "Задачи и проекты", color: "lilac", items: [
     ["Notion", "база знаний и управление", "https://dub.sh/vd-notion-ai", "", true],
-    ["Linear", "проекты и задачи команды", ""],
+    ["Linear", "проекты и задачи команды", "https://linear.app/docs/mcp"],
     ["Todoist", "задачи", "https://dub.sh/todoist", "", true],
   ]},
   { group: "Лидогенерация", color: "green", items: [
@@ -197,15 +197,15 @@ const HUB_CONNECTORS = [
     ["SendPulse", "рассылки и автоматизация маркетинга", "https://dub.sh/sendpulse", "", true],
   ]},
   { group: "Продажи: CRM", color: "blue", items: [
-    ["amoCRM", "сделки и контакты", "https://nova-amocrm.ru/widgets/mcp_server", "кастом"],
-    ["Bitrix24", "сделки, задачи и контакты", "https://mcp.bitrix24.ru/", "кастом"],
+    ["amoCRM", "сделки и контакты", "https://nova-amocrm.ru/widgets/mcp_server"],
+    ["Bitrix24", "сделки, задачи и контакты", "https://mcp.bitrix24.ru/"],
   ]},
   { group: "Аналитика", color: "lilac", items: [
     ["Windsor.ai", "данные рекламы и аналитики в одном месте", "https://dub.sh/windsorai", "", true],
   ]},
   { group: "Сайты и дизайн", color: "pink", items: [
     ["Тильда", "создание сайтов", "https://help-ru.tilda.cc/mcp"],
-    ["Figma", "продуктовый дизайн", ""],
+    ["Figma", "продуктовый дизайн", "https://www.figma.com/mcp-catalog/"],
   ]},
   { group: "Видео и соцсети", color: "yellow", items: [
     ["Higgsfield", "видео и продакшн", "https://dub.sh/higgsfield", "", true],
@@ -219,7 +219,7 @@ const HUB_CONNECTORS = [
   ]},
   { group: "Что ещё", color: "blue", items: [
     ["Composio", "один коннектор к сотням приложений", "https://composio.dev/mcp"],
-    ["Strava", "спорт и тренировки", ""],
+    ["Strava", "спорт и тренировки", "https://support.strava.com/en-us/articles/15401531-what-is-the-strava-mcp-connector"],
   ]},
 ];
 
@@ -1102,11 +1102,10 @@ const POSES = {
       h("h2", { class: "hub-h" }, "Плагины"),
       h("p", { class: "page-lead hub-tip" }, "Плагины можно установить, просто попросив своего чат-бота: он сам найдёт и установит."),
       group("Для видео и звука", "blue", HUB_PLUGINS),
-      h("h2", { class: "hub-h" }, "Надёжный VPN"),
       h("div", { class: "product vpn" },
-        h("span", { class: "product-name" }, "BlancVPN"),
+        h("span", { class: "product-name" }, "Дополнительно"),
         h("span", { class: "product-desc" }, "Надёжный VPN, чтобы Claude и ChatGPT работали стабильно."),
-        h("a", { class: "product-cta", href: VPN.url, target: "_blank", rel: "sponsored noopener noreferrer" }, "Подключить BlancVPN →"),
+        h("a", { class: "product-cta", href: VPN.url, target: "_blank", rel: "sponsored noopener noreferrer" }, "Надёжный VPN: BlancVPN →"),
         h("a", { class: "product-cta alt", href: VPN.guide, target: "_blank", rel: "noopener noreferrer" }, "Гайд: регистрация, оплата и настройка Claude и ChatGPT →")
       )
     );

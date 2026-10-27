@@ -184,41 +184,41 @@ const HUB_CONNECTORS = [
     ["Google Документы", "тексты и заметки", ""],
   ]},
   { group: "Задачи и проекты", color: "lilac", items: [
-    ["Notion", "база знаний и управление", ""],
+    ["Notion", "база знаний и управление", "https://dub.sh/vd-notion-ai", "", true],
     ["Linear", "проекты и задачи команды", ""],
-    ["Todoist", "задачи", ""],
+    ["Todoist", "задачи", "https://dub.sh/todoist", "", true],
   ]},
   { group: "Лидогенерация", color: "green", items: [
-    ["Telegaster", "ловит упоминания по ключевым словам в Telegram-чатах", ""],
-    ["GetSales", "аутрич в LinkedIn и email", ""],
+    ["Telegaster", "ловит упоминания по ключевым словам в Telegram-чатах", "https://dub.sh/tg-itas"],
+    ["GetSales", "аутрич в LinkedIn и email", "https://dub.sh/vasilkovdigital-gs", "", true],
   ]},
   { group: "Маркетинг", color: "pink", items: [
-    ["Smart Response", "ИИ-виджеты, формы и автоворонки", "https://smartresponse.app"],
-    ["SendPulse", "рассылки и автоматизация маркетинга", ""],
+    ["Smart Response", "ИИ-виджеты, формы и автоворонки", "https://dub.sh/sr-itas"],
+    ["SendPulse", "рассылки и автоматизация маркетинга", "https://dub.sh/sendpulse", "", true],
   ]},
   { group: "Продажи: CRM", color: "blue", items: [
     ["amoCRM", "сделки и контакты", "https://nova-amocrm.ru/widgets/mcp_server", "кастом"],
-    ["Bitrix24", "сделки, задачи и контакты", "https://www.bitrix24.kz/features/ai/mcp/", "кастом"],
+    ["Bitrix24", "сделки, задачи и контакты", "https://mcp.bitrix24.ru/", "кастом"],
   ]},
   { group: "Аналитика", color: "lilac", items: [
-    ["Windsor.ai", "данные рекламы и аналитики в одном месте", "https://windsor.ai"],
+    ["Windsor.ai", "данные рекламы и аналитики в одном месте", "https://dub.sh/windsorai", "", true],
   ]},
   { group: "Сайты и дизайн", color: "pink", items: [
-    ["Тильда", "создание сайтов", ""],
+    ["Тильда", "создание сайтов", "https://help-ru.tilda.cc/mcp"],
     ["Figma", "продуктовый дизайн", ""],
   ]},
   { group: "Видео и соцсети", color: "yellow", items: [
-    ["Higgsfield", "видео и продакшн", ""],
-    ["CapCut", "видеомонтаж", ""],
-    ["Riverside", "запись и монтаж подкастов и видео", ""],
-    ["Buffer", "управление соцсетями", ""],
+    ["Higgsfield", "видео и продакшн", "https://dub.sh/higgsfield", "", true],
+    ["CapCut", "видеомонтаж", "https://www.capcut.com/tools/capcut-x-codex"],
+    ["Riverside", "запись и монтаж подкастов и видео", "https://riverside.com/mcp"],
+    ["Buffer", "управление соцсетями", "https://buffer.com/integrations/claude?cta=bufferSite-globalNav-tools-claude-1"],
   ]},
   { group: "Поиск", color: "green", items: [
-    ["Perplexity", "поиск и ресёрч", ""],
-    ["Firecrawl", "чтение сайтов и транскрипты", ""],
+    ["Perplexity", "поиск и ресёрч", "https://docs.perplexity.ai/docs/getting-started/integrations/mcp-server"],
+    ["Firecrawl", "чтение сайтов и транскрипты", "https://docs.firecrawl.dev/mcp-server"],
   ]},
   { group: "Что ещё", color: "blue", items: [
-    ["Composio", "один коннектор к сотням приложений", "https://composio.dev"],
+    ["Composio", "один коннектор к сотням приложений", "https://composio.dev/mcp"],
     ["Strava", "спорт и тренировки", ""],
   ]},
 ];
@@ -227,7 +227,14 @@ const HUB_PLUGINS = [
   ["ffmpeg", "обработка и склейка видео", ""],
   ["Remotion", "видео из кода и шаблонов", ""],
   ["HyperFrames", "видео из HTML-композиций", ""],
+  ["Whisper", "распознавание речи: расшифровка аудио и видео в текст", ""],
 ];
+
+// Блок «Надёжный VPN»
+const VPN = {
+  url: "https://dub.sh/blancvpn",
+  guide: "https://t.me/nicholasvasilkov/4063",
+};
 
 const HUB_KEY = "agentHubOpen";
 
@@ -1070,13 +1077,14 @@ const POSES = {
   }
 
 
-  function hubItem([name, note, url, tag]) {
+  // Элемент: [название, описание, ссылка, метка, реферальная?]
+  function hubItem([name, note, url, tag, ref]) {
     const inner = [
       h("b", null, name, tag ? h("em", { class: "hub-tag" }, tag) : null),
       h("span", null, note),
     ];
     return url
-      ? h("a", { class: "hub-item is-link", href: url, target: "_blank", rel: "noopener noreferrer" }, ...inner)
+      ? h("a", { class: "hub-item is-link", href: url, target: "_blank", rel: (ref ? "sponsored " : "") + "noopener noreferrer" }, ...inner)
       : h("div", { class: "hub-item" }, ...inner);
   }
 
@@ -1088,11 +1096,19 @@ const POSES = {
       );
     root.append(
       h("h1", { class: "page-title" }, "Полезное"),
-      h("p", { class: "page-lead" }, "Всё, что пригодится агенту: сервисы-коннекторы и плагины. Ссылка на карточке — если сервис нужно подключить отдельно."),
+      h("p", { class: "page-lead" }, "Всё, что пригодится агенту: сервисы-коннекторы и плагины. Ссылка на карточке — где подключить или попробовать сервис. Часть ссылок реферальные: вам это ничего не стоит, мне может прийти бонус."),
       h("h2", { class: "hub-h" }, "Коннекторы"),
       ...HUB_CONNECTORS.map((g) => group(g.group, g.color, g.items)),
       h("h2", { class: "hub-h" }, "Плагины"),
-      group("Для видео", "blue", HUB_PLUGINS)
+      h("p", { class: "page-lead hub-tip" }, "Плагины можно установить, просто попросив своего чат-бота: он сам найдёт и установит."),
+      group("Для видео и звука", "blue", HUB_PLUGINS),
+      h("h2", { class: "hub-h" }, "Надёжный VPN"),
+      h("div", { class: "product vpn" },
+        h("span", { class: "product-name" }, "BlancVPN"),
+        h("span", { class: "product-desc" }, "Надёжный VPN, чтобы Claude и ChatGPT работали стабильно."),
+        h("a", { class: "product-cta", href: VPN.url, target: "_blank", rel: "sponsored noopener noreferrer" }, "Подключить BlancVPN →"),
+        h("a", { class: "product-cta alt", href: VPN.guide, target: "_blank", rel: "noopener noreferrer" }, "Гайд: регистрация, оплата и настройка Claude и ChatGPT →")
+      )
     );
   }
 

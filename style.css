@@ -202,11 +202,14 @@ button, input { font: inherit; color: inherit; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 18px;
   padding: 16px 20px 24px;
   text-align: center;
 }
+/* центр по высоте, но без обрезки сверху, если контент выше экрана */
+.hero > :first-child { margin-top: auto; }
+.hero > :last-child { margin-bottom: auto; }
 .cloud {
   position: relative;
   max-width: 320px;
@@ -244,6 +247,7 @@ button, input { font: inherit; color: inherit; }
 }
 .hero .pose { width: 250px; }
 @media (max-height: 700px) { .hero .pose { width: 180px; } }
+@media (max-height: 860px) { .hero .pose { width: 185px; } .hero { gap: 14px; } }
 
 /* ---------- Chat ---------- */
 .chat-head {
@@ -1202,14 +1206,7 @@ button, input { font: inherit; color: inherit; }
 }
 
 /* ---------- Хаб «Полезное» ---------- */
-.tabbar[hidden] { display: none; }
-.tabbar.reveal { animation: tabrise .5s cubic-bezier(.2,.9,.3,1.2); }
-@keyframes tabrise { from { transform: translateY(100%); } to { transform: none; } }
-@media (prefers-reduced-motion: reduce) { .tabbar.reveal { animation: none; } }
-
-.gift { display: flex; flex-direction: column; gap: 2px; max-width: 320px; background: var(--green); text-align: center; }
-.gift b { font-size: 17px; }
-.gift span { font-size: 14px; line-height: 1.35; }
+.done-call { margin: 0; max-width: 320px; font-size: 18px; line-height: 1.35; font-weight: 700; text-align: center; }
 
 .hub-h { margin: 26px 0 0; font-size: 24px; line-height: 1.15; }
 .hub-h:first-of-type { margin-top: 18px; }

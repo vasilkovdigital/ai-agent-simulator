@@ -65,6 +65,6 @@ const CONFIG = {
 - **`TELEGRAM_URL`** — кнопка «Мой Telegram: гайды и промпты», открывается в новой вкладке.
 - **Вкладка «Обо мне»:** `PERSONAL_TG_URL` (широкая кнопка «Написать мне в Telegram»), `SITE_URL`, `YOUTUBE_URL`, `LINKEDIN_URL`, `X_URL`, `TIKTOK_URL`, `SMARTRESPONSE_URL`. Ссылка со значением `"#"` на странице не показывается.
 
-Термины глоссария лежат в массиве `GLOSSARY` в `app.js`, фото для «Обо мне» — `assets/nikolay.webp`.
+Фото для «Обо мне» — `assets/nikolay.webp`; карточки «Полезного» — массивы `HUB_CONNECTORS` и `HUB_PLUGINS` в `app.js`.
 
 Тексты промпта, чек-листа и ответов на 5 частых вопросов лежат там же, в начале `app.js` (`agentPrompt()`, `checklist()`, `FAQ`). Промпт `agentPrompt()` совпадает с разделом 2 обоих скиллов — если меняете его, поправьте и `skill/menedzher-zadach-claude.md`, и `skill/menedzher-zadach-chatgpt.md` (и файлы на Google Диске).

@@ -967,10 +967,10 @@ const POSES = {
   }
 
   function renderHub(root) {
-    // Цифра в кружке — номер раздела по порядку
+    // Цифра в кружке — номер раздела по порядку (0 — без номера)
     const group = (num, title, color, items) =>
       h("section", null,
-        h("h2", { class: "gloss-group" }, h("span", { class: "pill " + color }, String(num)), title),
+        h("h2", { class: "gloss-group" }, num ? h("span", { class: "pill " + color }, String(num)) : null, title),
         h("div", { class: "hub-grid" }, items.map(hubItem))
       );
     root.append(
@@ -980,7 +980,7 @@ const POSES = {
       ...HUB_CONNECTORS.map((g, i) => group(i + 1, g.group, g.color, g.items)),
       h("h2", { class: "hub-h" }, "Плагины"),
       h("p", { class: "page-lead hub-tip" }, "Плагины можно установить, просто попросив своего чат-бота: он сам найдёт и установит."),
-      group(1, "Для видео и звука", "blue", HUB_PLUGINS),
+      group(0, "Для видео и звука", "blue", HUB_PLUGINS),
       h("div", { class: "product vpn" },
         h("span", { class: "product-name" }, "Плюшки"),
         h("span", { class: "product-desc" }, "Надёжный VPN, чтобы Claude и ChatGPT работали стабильно."),

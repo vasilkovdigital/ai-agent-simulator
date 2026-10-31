@@ -147,6 +147,10 @@ const HUB_CONNECTORS = [
     ["Riverside", "запись и монтаж подкастов и видео", "https://riverside.com/mcp"],
     ["Buffer", "управление соцсетями", "https://buffer.com/integrations/claude?cta=bufferSite-globalNav-tools-claude-1"],
   ]},
+  { group: "Аудио и озвучка", color: "pink", items: [
+    ["Syntx.ai", "100+ нейросетей в одном месте: текст, картинки, видео и музыка", "https://syntx.ai/welcome/sw7T4Cah", "", true],
+    ["ElevenLabs", "озвучка текста и синтез голоса", "https://try.elevenlabs.io/wrh3vy7sd2q1", "", true],
+  ]},
   { group: "Поиск", color: "green", items: [
     ["Perplexity", "поиск и ресёрч", "https://docs.perplexity.ai/docs/getting-started/integrations/mcp-server"],
     ["Firecrawl", "чтение сайтов и транскрипты", "https://docs.firecrawl.dev/mcp-server"],

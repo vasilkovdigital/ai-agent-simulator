@@ -967,19 +967,20 @@ const POSES = {
   }
 
   function renderHub(root) {
-    const group = (title, color, items) =>
+    // Цифра в кружке — номер раздела по порядку
+    const group = (num, title, color, items) =>
       h("section", null,
-        h("h2", { class: "gloss-group" }, h("span", { class: "pill " + color }, String(items.length)), title),
+        h("h2", { class: "gloss-group" }, h("span", { class: "pill " + color }, String(num)), title),
         h("div", { class: "hub-grid" }, items.map(hubItem))
       );
     root.append(
       h("h1", { class: "page-title" }, "Полезное"),
       h("p", { class: "page-lead" }, "Всё, что пригодится агенту: сервисы-коннекторы и плагины. Ссылка на карточке — где подключить или попробовать сервис. Часть ссылок реферальные: вам это ничего не стоит, а бонус получим мы оба 😊"),
       h("h2", { class: "hub-h" }, "Коннекторы"),
-      ...HUB_CONNECTORS.map((g) => group(g.group, g.color, g.items)),
+      ...HUB_CONNECTORS.map((g, i) => group(i + 1, g.group, g.color, g.items)),
       h("h2", { class: "hub-h" }, "Плагины"),
       h("p", { class: "page-lead hub-tip" }, "Плагины можно установить, просто попросив своего чат-бота: он сам найдёт и установит."),
-      group("Для видео и звука", "blue", HUB_PLUGINS),
+      group(1, "Для видео и звука", "blue", HUB_PLUGINS),
       h("div", { class: "product vpn" },
         h("span", { class: "product-name" }, "Плюшки"),
         h("span", { class: "product-desc" }, "Надёжный VPN, чтобы Claude и ChatGPT работали стабильно."),
